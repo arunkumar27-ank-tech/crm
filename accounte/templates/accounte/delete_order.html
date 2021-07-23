@@ -1,0 +1,13 @@
+{% extends 'accounte/main.html' %}
+{% load static %}
+{% block content %}
+
+<p>Are you sure you want to delete this order '{{item}}'??</p>
+<form action="{% url 'delete_order' item.id %}" method="POST">
+    {% csrf_token %}
+    <a class="btn btn-sm btn-warning" href="{% url 'dashboard' %}">Cancel</a>
+    <input class="btn btn-sm btn-danger" type="submit" value="submit">
+</form>
+
+
+{% endblock %}

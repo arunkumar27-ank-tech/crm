@@ -1,0 +1,9 @@
+#total-orders{
+    background-color:lightpink;
+  }
+  #orders-pending{
+    background-color:lightsteelblue ;
+  }
+  #orders-delivered{
+    background-color: lightskyblue;
+  }
