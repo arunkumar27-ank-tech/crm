@@ -67,7 +67,8 @@ def home(request):
     context = {'customer':customer,'orders':orders,'total_orders':total_orders,'orders_delivered':orders_delivered,
     'orders_pending':orders_pending}
     return render(request,'accounte\dashboard.html',context)
-
+@login_required(login_url='login')
+@admin_only
 def accountsettings(request):
     customer = request.user.customer
     form = SettingsForms(instance=customer)
