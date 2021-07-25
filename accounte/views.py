@@ -17,6 +17,7 @@ from .decorators import admin_only, allowed_users, unauthenticated_user
 from .forms import OrderForm, RegisterForm, SettingsForms
 from .signals import customer_profile
 
+
 @unauthenticated_user
 def register(request):
     
@@ -68,14 +69,12 @@ def home(request):
     'orders_pending':orders_pending}
     return render(request,'accounte\dashboard.html',context)
 @login_required(login_url='login')
-@admin_only
 def accountsettings(request):
     customer = request.user.customer
     form = SettingsForms(instance=customer)
     if request.method == 'POST':
         form = SettingsForms(request.POST, request.FILES, instance=customer)
-        if form.is_valid():
-          
+        if form.is_valid():         
             form.save()
     context = {'form':form}
     return render(request, 'accounte/account_settings.html', context)
